@@ -1,0 +1,24 @@
+<h1>{{title}}</h1>
+
+<table class="table-border" style="width:100%"> 
+    <thead>
+        <tr>
+            <td>Name/<br />JobTitle</td>
+            <td>Company</td>
+            <td>Phone</td>
+            <td>Address</td>
+            <td>Email</td>
+            <td>Date last contacted</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let con of contacts">
+            <td>{{con.name}}<br/>{{con.jobTitle}}</td>
+            <td>{{con.company}}</td>
+            <td>{{con.phoneNo}}</td>
+            <td>{{con.email}}</td>
+            <td>{{con.address}}</td>
+            <td>{{con.lastDateConnected | date: 'short'}}</td>
+        </tr>
+    </tbody>
+</table>

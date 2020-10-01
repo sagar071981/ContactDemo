@@ -28,6 +28,7 @@ namespace ContactDemo.API
         {
             services.AddDbContext<ContactDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddScoped<IContactRepository, ContactRepository>();
+            services.AddCors();
             services.AddControllers();
         }
 
@@ -40,6 +41,8 @@ namespace ContactDemo.API
             }
 
             app.UseRouting();
+
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
             app.UseAuthorization();
 
