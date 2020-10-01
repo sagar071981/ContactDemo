@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Contact } from './_models/Contact';
+import { ContactService } from './_services/contact.service';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent  implements OnInit{
   title = 'Contact Manager';
-  contacts: any;
+  contacts: Contact[];
 
-  constructor(private http:HttpClient) {}
+  constructor(private contactService:ContactService) {}
   
   ngOnInit() {
     this.getContacts();
   }
 
   getContacts() {
-    this.http.get('http://localhost:64145/api/contact').subscribe(response=>
-    {
-      this.contacts = response;
-    }, error=> {
-      console.log(error);
-    });
+    this.contactService.getContacts().subscribe(res=>
+      {
+        this.contacts = res;
+      }, error => {
+        console.log(error);
+      });
   }
 }

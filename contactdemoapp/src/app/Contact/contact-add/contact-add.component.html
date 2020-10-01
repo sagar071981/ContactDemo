@@ -1,0 +1,122 @@
+<form [formGroup]="contactForm" (ngSubmit)="saveContact()">
+    <h2 class="text-center text-primary">Add Contact</h2>
+    <hr />
+
+    <div class="form-group">
+        <input
+          type="text"
+          [ngClass]="{
+            'is-invalid':
+              contactForm.get('name').errors &&
+              contactForm.get('name').touched
+          }"
+          class="form-control"
+          formControlName="name"
+          placeholder="name"
+        />
+        <div class="invalid-feedback">Name required</div>
+    </div>
+
+    <div class="form-group">
+        <input
+          type="text"
+          [ngClass]="{
+            'is-invalid':
+              contactForm.get('jobTitle').errors &&
+              contactForm.get('jobTitle').touched
+          }"
+          class="form-control"
+          formControlName="jobTitle"
+          placeholder="jobTitle"
+        />
+        <div class="invalid-feedback">Job title required</div>
+    </div>
+
+    <div class="form-group">
+        <input
+          type="text"
+          [ngClass]="{
+            'is-invalid':
+              contactForm.get('company').errors &&
+              contactForm.get('company').touched
+          }"
+          class="form-control"
+          formControlName="company"
+          placeholder="company"
+        />
+        <div class="invalid-feedback">Company required</div>
+    </div>
+
+    <div class="form-group">
+        <input
+          type="text"
+          [ngClass]="{
+            'is-invalid':
+              contactForm.get('phoneNo').errors &&
+              contactForm.get('phoneNo').touched
+          }"
+          class="form-control"
+          formControlName="phoneNo"
+          placeholder="phoneNo"
+        />
+        <div class="invalid-feedback">Phoneno required</div>
+    </div>
+
+    <div class="form-group">
+        <input
+          type="text"
+          [ngClass]="{
+            'is-invalid':
+              contactForm.get('address').errors &&
+              contactForm.get('address').touched
+          }"
+          class="form-control"
+          formControlName="address"
+          placeholder="address"
+        />
+        <div class="invalid-feedback">Address required</div>
+    </div>
+
+    <div class="form-group">
+        <input
+          type="text"
+          [ngClass]="{
+            'is-invalid':
+              contactForm.get('email').errors &&
+              contactForm.get('email').touched
+          }"
+          class="form-control"
+          formControlName="email"
+          placeholder="email"
+        />
+        <div class="invalid-feedback">Email required</div>
+    </div>
+
+    <div class="form-group">
+        <input
+          type="text"
+          bsDatepicker
+          [ngClass]="{
+            'is-invalid':
+              contactForm.get('lastDateConnected').errors &&
+              contactForm.get('lastDateConnected').touched
+          }"
+          class="form-control"
+          formControlName="lastDateConnected"
+          placeholder="lastDateConnected"
+        />
+        <div class="invalid-feedback">Last date connected required</div>
+    </div>
+
+    <div class="form-group text-center">
+        <button
+          class="btn btn-success"
+          [disabled]="!contactForm.valid"
+          type="submit"
+        >
+          Save
+        </button>
+    </div>div>
+
+</form>
+
