@@ -63,12 +63,12 @@ namespace ContactDemo.API.Test
         {
             var contactRepository = new Mock<IContactRepository>();
             contactRepository.Setup(o => o.GetContact(1)).ReturnsAsync(Contacts[0]);
-            contactRepository.Setup(o => o.DeleteContact(1)).ReturnsAsync(Contacts);
+            contactRepository.Setup(o => o.DeleteContact(1));
 
             var contactController = new ContactController(contactRepository.Object);
 
             var result = await contactController.DeleteContact(1);
-            Assert.IsAssignableFrom<OkObjectResult>(result);
+            Assert.IsAssignableFrom<OkResult>(result);
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace ContactDemo.API.Test
         {
             var contactRepository = new Mock<IContactRepository>();
             contactRepository.Setup(o => o.GetContact(1)).ReturnsAsync(Contacts[0]);
-            contactRepository.Setup(o => o.DeleteContact(1)).ReturnsAsync(Contacts);
+            contactRepository.Setup(o => o.DeleteContact(1));
 
             var contactController = new ContactController(contactRepository.Object);
 
@@ -91,12 +91,12 @@ namespace ContactDemo.API.Test
             contactToUpdate.Object.Id = 1;
             var contactRepository = new Mock<IContactRepository>();
             contactRepository.Setup(o => o.GetContact(1)).ReturnsAsync(Contacts[0]);
-            contactRepository.Setup(o => o.UpdateContact(contactToUpdate.Object)).ReturnsAsync(Contacts);
+            contactRepository.Setup(o => o.UpdateContact(contactToUpdate.Object));
 
             var contactController = new ContactController(contactRepository.Object);
 
             var result = await contactController.UpdateContact(contactToUpdate.Object);
-            Assert.IsAssignableFrom<OkObjectResult>(result);
+            Assert.IsAssignableFrom<OkResult>(result);
         }
 
         [Fact]
@@ -105,7 +105,7 @@ namespace ContactDemo.API.Test
             var contactToUpdate = new Mock<Contact>();
             var contactRepository = new Mock<IContactRepository>();
             contactRepository.Setup(o => o.GetContact(1)).ReturnsAsync(Contacts[0]);
-            contactRepository.Setup(o => o.UpdateContact(contactToUpdate.Object)).ReturnsAsync(Contacts);
+            contactRepository.Setup(o => o.UpdateContact(contactToUpdate.Object));
 
             var contactController = new ContactController(contactRepository.Object);
 
@@ -118,12 +118,12 @@ namespace ContactDemo.API.Test
         {
             var contactToUpdate = new Mock<Contact>();
             var contactRepository = new Mock<IContactRepository>();
-            contactRepository.Setup(o => o.AddContact(contactToUpdate.Object)).ReturnsAsync(Contacts);
+            contactRepository.Setup(o => o.AddContact(contactToUpdate.Object));
 
             var contactController = new ContactController(contactRepository.Object);
 
             var result = await contactController.AddContact(contactToUpdate.Object);
-            Assert.IsAssignableFrom<OkObjectResult>(result);
+            Assert.IsAssignableFrom<OkResult>(result);
         }
     }
 }

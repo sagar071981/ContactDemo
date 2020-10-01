@@ -54,18 +54,18 @@ namespace ContactDemo.API.Controllers
             }
             else
             {
-                var result = await contactRepository.DeleteContact(id);
+                await contactRepository.DeleteContact(id);
 
-                return Ok(result);
+                return Ok();
             }
         }
 
         [HttpPost]
         public async Task<IActionResult> AddContact(Contact contact)
         {
-            var result = await contactRepository.AddContact(contact);
+            await contactRepository.AddContact(contact);
 
-            return Ok(result);
+            return Ok();
         }
 
         [HttpPut]
@@ -78,9 +78,9 @@ namespace ContactDemo.API.Controllers
                 return NotFound(errorMessage);
             }
 
-            var result = await contactRepository.UpdateContact(contact);
+            await contactRepository.UpdateContact(contact);
 
-            return Ok(result);
+            return Ok();
         }
     }
 }

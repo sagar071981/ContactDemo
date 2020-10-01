@@ -16,22 +16,18 @@ namespace ContactDemo.API.Data
         }
 
 
-        public async Task<List<Contact>> AddContact(Contact contactData)
+        public async Task AddContact(Contact contactData)
         {
             dbContext.Contacts.Add(contactData);
             await dbContext.SaveChangesAsync();
-
-            return await dbContext.Contacts.ToListAsync();
         }
 
-        public async Task<List<Contact>> DeleteContact(int contactId)
+        public async Task DeleteContact(int contactId)
         {
             var contactToDelete = dbContext.Contacts.Single(e => e.Id == contactId);
 
             dbContext.Contacts.Remove(contactToDelete);
             await dbContext.SaveChangesAsync();
-
-            return await dbContext.Contacts.ToListAsync();
         }
 
         public async Task<Contact> GetContact(int contactId)
@@ -44,7 +40,7 @@ namespace ContactDemo.API.Data
             return await dbContext.Contacts.ToListAsync();
         }
 
-        public async Task<List<Contact>> UpdateContact(Contact contactData)
+        public async Task UpdateContact(Contact contactData)
         {
             var contactToUpdate = dbContext.Contacts.Single(e => e.Id == contactData.Id);
 
@@ -58,7 +54,6 @@ namespace ContactDemo.API.Data
 
             await dbContext.SaveChangesAsync();
 
-            return await dbContext.Contacts.ToListAsync();
         }
     }
 }

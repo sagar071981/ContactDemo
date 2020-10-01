@@ -11,11 +11,11 @@ namespace ContactDemo.API.Data
 
         Task<Contact> GetContact(int contactId);
 
-        Task<List<Contact>> AddContact(Contact contactData);
+        Task AddContact(Contact contactData);
 
-        Task<List<Contact>> UpdateContact(Contact contactData);
+        Task UpdateContact(Contact contactData);
 
-        Task<List<Contact>> DeleteContact(int contactId);
+        Task DeleteContact(int contactId);
 
     }
 }
