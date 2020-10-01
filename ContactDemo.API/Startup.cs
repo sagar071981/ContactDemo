@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace ContactDemo.API
 {
@@ -29,6 +31,15 @@ namespace ContactDemo.API
             services.AddDbContext<ContactDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddScoped<IContactRepository, ContactRepository>();
             services.AddCors();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Contact Manager API",
+                    Description = "Developed using ASP.NET Core Web API"
+                });
+            });
             services.AddControllers();
         }
 
@@ -39,6 +50,12 @@ namespace ContactDemo.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Contact Manager V1");
+            });
 
             app.UseRouting();
 
